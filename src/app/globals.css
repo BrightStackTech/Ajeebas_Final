@@ -1,0 +1,83 @@
+@import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/pagination";
+@import "swiper/css/autoplay";
+
+@layer base {
+  :root {
+    --background: #FAF7F2;
+    --surface: #F6F1E8;
+    --foreground: #2A1A12;
+    --accent: #B88A2E;
+    --border: #E8DFD1;
+    --card-bg: #FFFFFF;
+    --muted: #6B5548;
+  }
+
+  .dark {
+    --background: #120B08;
+    --surface: #1B120E;
+    --foreground: #F5EFE6;
+    --accent: #D4AF37;
+    --border: #2E1F18;
+    --card-bg: #1B120E;
+    --muted: #A89588;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-serif {
+    font-family: var(--font-serif), Georgia, serif;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--background);
+  }
+
+  /* Quiet custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+}
+
+/* Theme-aware luxury card styling */
+.brand-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.brand-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Swiper styling for both modes */
+.swiper-pagination-bullet {
+  background: var(--foreground) !important;
+  opacity: 0.2 !important;
+}
+.swiper-pagination-bullet-active {
+  background: var(--accent) !important;
+  opacity: 1 !important;
+  width: 20px !important;
+  border-radius: 2px !important;
+}
