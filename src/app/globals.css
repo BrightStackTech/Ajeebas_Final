@@ -1,0 +1,155 @@
+@import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/pagination";
+@import "swiper/css/autoplay";
+
+@layer base {
+  :root {
+    --background: #F7F3EE;
+    --surface: #EFE7DD;
+    --foreground: #2C1810;
+    --accent: #C8A25A;
+    --border: #E4D8C8;
+    --card-bg: #FFFFFF;
+    --muted: #6B5548;
+    --gold-subtle: rgba(200, 162, 90, 0.15);
+  }
+
+  .dark {
+    --background: #120A07;
+    --surface: #1D120D;
+    --foreground: #F5EFE8;
+    --accent: #D4B06A;
+    --border: #2E1A11;
+    --card-bg: #1D120D;
+    --muted: #A39083;
+    --gold-subtle: rgba(212, 176, 106, 0.15);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+  }
+
+  *, *::before, *::after {
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-serif {
+    font-family: var(--font-serif), Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--background);
+  }
+
+  /* Editorial custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 2px;
+    opacity: 0.5;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+}
+
+/* Luxury Card Styling - 8px lift and 0 20px 60px rgba(0,0,0,0.15) soft shadow */
+.brand-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.5s ease;
+}
+
+/* Luxury Navigation Underline & Lift */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: translateX(-50%);
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+
+.brand-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.dark .brand-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* Gold Shimmer Sweep Effect for Buttons */
+.gold-shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+.gold-shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: rotate(30deg);
+  transition: left 0.75s ease;
+}
+.gold-shimmer-btn:hover::after {
+  left: 120%;
+}
+
+/* Horizontal drag container */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Swiper pagination bullet styling */
+.swiper-pagination-bullet {
+  background: var(--foreground) !important;
+  opacity: 0.25 !important;
+  transition: all 0.3s ease !important;
+}
+.swiper-pagination-bullet-active {
+  background: var(--accent) !important;
+  opacity: 1 !important;
+  width: 24px !important;
+  border-radius: 2px !important;
+}
